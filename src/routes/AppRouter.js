@@ -5,9 +5,9 @@ import AdminDashboard from '../components/admin-panel/AdminDashboard'
 export default function AppRouter() {
   return (
     <BrowserRouter>
-        <Routes>
-            <Route path='/user' index element={<AdminDashboard />}/>
-        </Routes>
+      <Routes>
+        <Route path='/user' index element={<AdminDashboard />}/>
+      </Routes>
     </BrowserRouter>
   )
 }
