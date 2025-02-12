@@ -1,14 +1,22 @@
+import { Link } from "react-router-dom";
 import { Bell, User } from "lucide-react"; // for Lucide-react icons
+import { useState } from "react";
+import AddCarModal from "./AddCarModal";
 
 export default function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false); // modal state
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <header className="flex justify-between items-center px-4 py-2 bg-white border-b border-gray-200">
       {/* Chap tomondagi tugma */}
       <div className="flex items-center gap-2">
-        <button className="h-[48px] w-[192px] flex items-center justify-center gap-2 text-white bg-blue-600 rounded-[12px] hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
-          <User size={24} />
-          <span style={{fontSize: '15px'}}>Asosiyga qaytish</span>
-        </button>
+        <Link onClick={() => setIsModalOpen(true)}>
+            <button className="h-[48px] w-[192px] flex items-center justify-center gap-2 text-white bg-blue-600 rounded-[12px] hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+                <User size={24} />
+                <span style={{fontSize: '15px'}}>Asosiyga qaytish</span>
+            </button>
+        </Link>
       </div>
 
       {/* O'ng tomondagi belgi va avatar */}
@@ -28,6 +36,8 @@ export default function Header() {
           />
         </div>
       </div>
+
+      {isModalOpen && <AddCarModal closeModal={closeModal}/>}
     </header>
   );
 }
